@@ -8,6 +8,7 @@ Este projeto solicita o deploy de todos os sites de um serviço Laravel Forge a 
 - Configure o webhook do seu repositório para a rota /api/deploy
 
 
+## Features
 - [x] Obedecer o limit Rate de 60 requisições por minuto no Forge.
 - [x] Erros: Excessões são lançadas caso ocorra erro na reuqisição forge ou se a variável de ambiente não estiver configurada.
 - [x] Teste de integração - Testa a rota /api/deploy.
