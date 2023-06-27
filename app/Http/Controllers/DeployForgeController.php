@@ -32,7 +32,6 @@ class DeployForgeController extends Controller
                 }
             }
         }
-    
         return [
             'success' => $successSites,
             'error' => $errorSites
@@ -75,10 +74,16 @@ class DeployForgeController extends Controller
      */
     private function getForgeHeaders()
     {
+        $forgeApiToken = env('FORGE_API_TOKEN');
+    
+        if (empty($forgeApiToken)) {
+            throw new \Exception('FORGE_API_TOKEN not configured in .env file');
+            }
+    
         return [
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer ' . env('FORGE_API_TOKEN'),
+            'Authorization' => 'Bearer ' . $forgeApiToken,
         ];
     }
 }
