@@ -14,14 +14,29 @@ class DeployForgeController extends Controller
     public function run()
     {
         $servers = $this->getServers();
-
+        $successSites = [];
+        $errorSites = [];
+    
         foreach ($servers as $server) {
             $sites = $this->getSites($server['id']);
-
+    
             foreach ($sites as $site) {
-                Http::get($site['deployment_url']);
+                try {
+                    Http::get($site['deployment_url']);
+                    $successSites[] = $site['name'];
+                } catch (\Exception $e) {
+                    $errorSites[] = [
+                        'name' => $site['name'],
+                        'error' => $e->getMessage()
+                    ];
+                }
             }
         }
+    
+        return [
+            'success' => $successSites,
+            'error' => $errorSites
+        ];
     }
 
     /**
