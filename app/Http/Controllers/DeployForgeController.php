@@ -16,7 +16,9 @@ class DeployForgeController extends Controller
      */
     public function run(Request $request)
     {
-        Log::info('DeployForgeController@run $request', $request);
+        Log::info('DeployForgeController@run $request');
+        Log::info($request);
+
         $servers = $this->ForgeApiRequest('servers')['servers'];
         $successSites = [];
         $errorSites = [];
