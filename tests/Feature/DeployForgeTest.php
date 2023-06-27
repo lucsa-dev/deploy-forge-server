@@ -36,7 +36,7 @@ class DeployForgeTest extends TestCase
         ]);
 
         // to Execute run()`
-        $response = $this->get('/api/deploy');
+        $response = $this->post('/api/deploy');
         
         // verify response
         $response->assertStatus(200);
