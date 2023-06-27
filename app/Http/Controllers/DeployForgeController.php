@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class DeployForgeController extends Controller
 {
@@ -12,8 +14,9 @@ class DeployForgeController extends Controller
      *
      * @return string
      */
-    public function run()
+    public function run(Request $request)
     {
+        Log::info('DeployForgeController@run $request', $request);
         $servers = $this->ForgeApiRequest('servers')['servers'];
         $successSites = [];
         $errorSites = [];
