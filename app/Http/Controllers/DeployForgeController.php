@@ -12,7 +12,8 @@ class DeployForgeController extends Controller
     /**
      * Run the deployment Forge servers.
      *
-     * @return string
+     * @return array [success, error]
+     * @throws \Exception]
      */
     public function run(Request $request)
     {
@@ -46,8 +47,9 @@ class DeployForgeController extends Controller
 
         /**
      * Forge Api request.
-     *
-     * @return array
+     * @param string $uri The uri to request
+     * @return array [success, error]
+     * @throws \Exception
      */
     private function ForgeApiRequest($uri)
     {
@@ -77,7 +79,8 @@ class DeployForgeController extends Controller
     /**
      * Get the Forge API headers.
      *
-     * @return array
+     * @return array [headers]
+     * @throws \Exception
      */
     private function getForgeHeaders()
     {
